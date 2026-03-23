@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createSignal } from "solid-js";
 import { Router, Route } from "@solidjs/router";
 import Entity from "../Entity";
-import { createRandomPoster } from "./utils";
+import { FIXED_POSTERS } from "./utils";
 
 const meta: Meta<typeof Entity> = {
   title: "Page/Entity",
@@ -14,7 +14,7 @@ export default meta;
 
 type Story = StoryObj<typeof Entity>;
 
-const createEntityPayload = (type: "movie" | "tv", id: number) => {
+const createEntityPayload = (type: "movie" | "series", id: number) => {
   const [entity] = createSignal({
     id,
     type,
@@ -30,8 +30,8 @@ const createEntityPayload = (type: "movie" | "tv", id: number) => {
     }
   });
 
-  const [recommendations] = createSignal(Array.from({ length: 7 }, () => createRandomPoster()));
-  const [credits] = createSignal(Array.from({ length: 7 }, () => createRandomPoster()));
+  const [recommendations] = createSignal(FIXED_POSTERS);
+  const [credits] = createSignal(FIXED_POSTERS);
 
   return { entity, recommendations, credits };
 };
@@ -50,7 +50,7 @@ export const MovieEntity: Story = {
 
 export const TvEntity: Story = {
   render: () => {
-    const data = createEntityPayload("tv", 202);
+    const data = createEntityPayload("series", 202);
 
     return (
       <Router>
