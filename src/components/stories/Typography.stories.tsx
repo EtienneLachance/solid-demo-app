@@ -4,7 +4,27 @@ import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import theme from "theme";
 
 const TypographyStory: Component = (props: any) => {
-  return <Text>{props.title}</Text>;
+  return (
+    <View
+      style={{
+        height: 100,
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        border: { color: 0xffffff66, width: 3 }
+      }}
+    >
+      <Text
+        style={{
+          fontFamily: props.theme.fontFamily,
+          fontSize: props.theme.fontSize,
+          fontWeight: props.theme.fontWeight
+        }}
+      >
+        {props.title}
+      </Text>
+    </View>
+  );
 };
 
 const meta: Meta<typeof TypographyStory> = {
@@ -16,7 +36,7 @@ export default meta;
 
 type Story = StoryObj<typeof TypographyStory>;
 
-export const Title1: Story = { args: { theme: theme.typography.display1, title: "Display 1" } };
+export const Display1: Story = { args: { theme: theme.typography.display1, title: "Display 1" } };
 export const Display2: Story = { args: { theme: theme.typography.display2, title: "Display 2" } };
 export const Display3: Story = { args: { theme: theme.typography.display3, title: "Display 3" } };
 export const Display4: Story = { args: { theme: theme.typography.display4, title: "Display 4" } };

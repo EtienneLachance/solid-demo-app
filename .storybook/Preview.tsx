@@ -3,7 +3,8 @@ import { Config, createRenderer, For, loadFonts, Text, View } from "@lightningtv
 import type { Preview } from "storybook-solidjs-vite";
 import { Inspector } from "@lightningjs/renderer/inspector";
 import { SdfTextRenderer, WebGlCoreRenderer } from "@lightningjs/renderer/webgl";
-import fonts from "../fonts";
+import fonts from "../src/fonts";
+import { useMouse } from "@lightningtv/solid/primitives";
 import "dayjs/locale/fr";
 
 import { createSignal, Show } from "solid-js";
@@ -93,6 +94,8 @@ const preview: Preview = {
         startRenderer = false;
         const { render, renderer } = createRenderer(Config.rendererOptions as any, solidRoot);
         loadFonts(fonts);
+
+        useMouse();
 
         render(() => {
           const shManager = renderer.stage.shManager;

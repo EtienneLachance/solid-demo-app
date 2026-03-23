@@ -1,11 +1,5 @@
-import {
-  type IntrinsicNodeProps,
-  View,
-  Text,
-  type NodeProps,
-  Dynamic
-} from "@lightningtv/solid";
-import { Column, Row, VirtualRow, Image } from "@lightningtv/solid/primitives";
+import { type IntrinsicNodeProps, View, Text, type NodeProps, Dynamic } from "@lightningtv/solid";
+import { Column, Row, VirtualRow, Image, useMouse } from "@lightningtv/solid/primitives";
 import { createEffect, createSignal, For, Index } from "solid-js";
 import styles, { buttonStyles } from "../styles";
 import { type Tile } from "../api/formatters/ItemFormatter";
@@ -18,7 +12,7 @@ export function Thumbnail(props: IntrinsicNodeProps & { item: Tile }) {
       src={props.item.src}
       placeholder="./assets/fallback.png"
       item={props.item}
-      announce={[props.item.title, 'PAUSE-1', props.item.overview]}
+      announce={[props.item.title, "PAUSE-1", props.item.overview]}
       style={styles.Thumbnail}
     />
   );
@@ -42,14 +36,16 @@ export interface TileRowProps extends IntrinsicNodeProps {
 export function TileRow(props: TileRowProps) {
   return (
     <Row {...props} style={styles.Row}>
-      <Index each={props.items}>{(item, index) => <Thumbnail item={item()} announceContext={`${index + 1} of ${props.items.length}`} />}</Index>
+      <Index each={props.items}>
+        {(item, index) => <Thumbnail item={item()} announceContext={`${index + 1} of ${props.items.length}`} />}
+      </Index>
     </Row>
   );
 }
 
 export function Button(props) {
   return (
-    <View {...props} announce={[props.children, 'button']} forwardStates style={buttonStyles.container}>
+    <View {...props} announce={[props.children, "button"]} forwardStates style={buttonStyles.container}>
       <Text style={buttonStyles.text}>{props.children || props.title}</Text>
     </View>
   );
@@ -60,20 +56,32 @@ export function AssetPanel(props) {
 
   createEffect(() => {
     if (props.open) {
-      panelRef.animate({
-        x: 1470,
-      }, { duration: 400, easing: "ease-in-out" }).start();
+      panelRef
+        .animate(
+          {
+            x: 1470
+          },
+          { duration: 400, easing: "ease-in-out" }
+        )
+        .start();
       actionRef.setFocus();
     } else if (panelRef.rendered) {
-      panelRef.animate({
-        x: 1920,
-      }, { duration: 400, easing: "ease-in-out" }).start();
+      panelRef
+        .animate(
+          {
+            x: 1920
+          },
+          { duration: 400, easing: "ease-in-out" }
+        )
+        .start();
     }
-  })
+  });
 
   return (
     <View {...props} x={1920} ref={panelRef} color={"#000000"} width={450} height={1080} zIndex={5}>
-      <Text x={75} y={50} fontSize={32}>{props.item?.title}</Text>
+      <Text x={75} y={50} fontSize={32}>
+        {props.item?.title}
+      </Text>
 
       <Column ref={actionRef} onLeft={props.close} onBack={props.close} x={75} y={200}>
         <Button onEnter={props.close}>Record</Button>
@@ -102,7 +110,16 @@ export function TitleRow(props: TileRowProps) {
       <Text skipFocus style={titleRowStyles}>
         {props.title}
       </Text>
-      <VirtualRow gap={20} displaySize={8} bufferSize={3} each={props.items} y={50} scroll={props.scroll} wrap={props.wrap} selected={props.selected}>
+      <VirtualRow
+        gap={20}
+        displaySize={8}
+        bufferSize={3}
+        each={props.items}
+        y={50}
+        scroll={props.scroll}
+        wrap={props.wrap}
+        selected={props.selected}
+      >
         {(item, index) => (
           <Dynamic component={typeToComponent[props.rowType || props.row?.type]} index={index()} item={item()} />
         )}
@@ -159,6 +176,7 @@ const posterTitleStyles = {
 } as const;
 
 export function PosterTitle(props: NodeProps & { title: string }) {
+  console.log(props.item?.title);
   return (
     <View
       src={props.item?.src}
@@ -204,23 +222,10 @@ export function Hero(
 ) {
   const [hasFocus, setHasFocus] = createSignal(false);
   return (
-    <View
-      {...props}
-      src={props.item.backdrop}
-      style={heroStyles}
-      onFocusChanged={setHasFocus}
-      forwardStates
-    >
+    <View {...props} src={props.item.backdrop} style={heroStyles} onFocusChanged={setHasFocus} forwardStates>
       <View transition={{ alpha: heroTransition }} alpha={hasFocus() ? 1 : 0}>
         <View width={185} height={278} x={54} y={220} src={props.item.src} />
-        <Text
-          y={520}
-          x={54}
-          fontSize={64}
-          width={1000}
-          maxLines={1}
-          style={heroTextStyles}
-        >
+        <Text y={520} x={54} fontSize={64} width={1000} maxLines={1} style={heroTextStyles}>
           {props.item.title}
         </Text>
         <Text
@@ -255,13 +260,5 @@ const BlockStyle = {
   }
 };
 export function Block(props) {
-  return (
-    <View
-      {...props}
-      width={100}
-      height={100}
-      style={BlockStyle}
-      color={props.color || "#e0e0e0"}
-    />
-  );
+  return <View {...props} width={100} height={100} style={BlockStyle} color={props.color || "#e0e0e0"} />;
 }

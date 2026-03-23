@@ -7,13 +7,25 @@ export default [
     type: "msdf",
     fontFamily: "Roboto",
     atlasDataUrl: basePath + "fonts/Roboto-Regular.msdf.json",
-    atlasUrl: basePath + "fonts/Roboto-Regular.msdf.png"
+    atlasUrl: basePath + "fonts/Roboto-Regular.msdf.png",
+    metrics: {
+      ascender: 1000,
+      descender: 100,
+      lineGap: 0,
+      unitsPerEm: 1000
+    }
   } as const,
   {
     type: "msdf",
     fontFamily: "Roboto700",
     atlasDataUrl: basePath + "fonts/Roboto-Bold.msdf.json",
-    atlasUrl: basePath + "fonts/Roboto-Bold.msdf.png"
+    atlasUrl: basePath + "fonts/Roboto-Bold.msdf.png",
+    metrics: {
+      ascender: 1000,
+      descender: 100,
+      lineGap: 0,
+      unitsPerEm: 1000
+    }
   } as const,
   {
     type: "msdf",

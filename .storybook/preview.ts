@@ -1,1 +1,1 @@
-export { default } from '../src/.storybook/Preview';
+export { default } from './Preview.tsx';
