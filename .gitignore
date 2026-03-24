@@ -16,3 +16,5 @@ lg/assets
 lg/fonts
 lg/*.ipk
 lg/index.html
+.idea/
+.vscode/
