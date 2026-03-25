@@ -7,6 +7,7 @@ src/api/key.ts
 pnpm-workspace.yaml
 # This project uses `pnpm` for package management
 package-lock.json
+pnpm-lock.yaml
 # These are part of the build
 tizen/index.html
 tizen/assets
