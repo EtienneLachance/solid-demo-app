@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { View, Text } from "@lightningtv/solid";
-import { Row, Column } from "@lightningtv/solid/primitives";
+import { Row } from "@lightningtv/solid/primitives";
 
 const meta: Meta = {
   title: "Components/Flex",
@@ -59,11 +59,11 @@ export const RowJustifyFlexStart: Story = {
   render: () => (
     <Container>
       <Title>Row - Justify Content: flexStart</Title>
-      <Row gap={12} justifyContent="flexStart" width={400} height={100}>
+      <View display="flex" flexDirection="row" gap={12} justifyContent="flexStart" width={400} height={100}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Row>
+      </View>
     </Container>
   )
 };
@@ -72,11 +72,11 @@ export const RowJustifyCenter: Story = {
   render: () => (
     <Container>
       <Title>Row - Justify Content: center</Title>
-      <Row gap={12} justifyContent="center" width={400} height={100}>
+      <View display="flex" flexDirection="row" gap={12} justifyContent="center" width={400} height={100}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Row>
+      </View>
     </Container>
   )
 };
@@ -85,11 +85,11 @@ export const RowJustifyFlexEnd: Story = {
   render: () => (
     <Container>
       <Title>Row - Justify Content: flexEnd</Title>
-      <Row gap={12} justifyContent="flexEnd" width={400} height={100}>
+      <View display="flex" flexDirection="row" gap={12} justifyContent="flexEnd" width={400} height={100}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Row>
+      </View>
     </Container>
   )
 };
@@ -98,11 +98,11 @@ export const RowJustifySpaceBetween: Story = {
   render: () => (
     <Container>
       <Title>Row - Justify Content: spaceBetween</Title>
-      <Row gap={12} justifyContent="spaceBetween" width={400} height={100}>
+      <View display="flex" flexDirection="row" gap={12} justifyContent="spaceBetween" width={400} height={100}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Row>
+      </View>
     </Container>
   )
 };
@@ -111,11 +111,11 @@ export const RowJustifySpaceAround: Story = {
   render: () => (
     <Container>
       <Title>Row - Justify Content: spaceAround</Title>
-      <Row gap={12} justifyContent="spaceAround" width={400} height={100}>
+      <View display="flex" flexDirection="row" gap={12} justifyContent="spaceAround" width={400} height={100}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Row>
+      </View>
     </Container>
   )
 };
@@ -125,11 +125,11 @@ export const RowAlignFlexStart: Story = {
   render: () => (
     <Container>
       <Title>Row - Align Items: flexStart</Title>
-      <Row gap={12} alignItems="flexStart" width={400} height={150}>
+      <View display="flex" flexDirection="row" gap={12} alignItems="flexStart" width={400} height={150}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff, height: 100 }} />
         <Block style={{ color: 0xffd93dff, height: 80 }} />
-      </Row>
+      </View>
     </Container>
   )
 };
@@ -151,11 +151,11 @@ export const RowAlignFlexEnd: Story = {
   render: () => (
     <Container>
       <Title>Row - Align Items: flexEnd</Title>
-      <Row gap={12} alignItems="flexEnd" width={400} height={150}>
+      <View display="flex" flexDirection="row" gap={12} alignItems="flexEnd" width={400} height={150}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff, height: 100 }} />
         <Block style={{ color: 0xffd93dff, height: 80 }} />
-      </Row>
+      </View>
     </Container>
   )
 };
@@ -165,11 +165,11 @@ export const ColumnJustifyFlexStart: Story = {
   render: () => (
     <Container>
       <Title>Column - Justify Content: flexStart</Title>
-      <Column gap={12} justifyContent="flexStart" width={150} height={250}>
+      <View display="flex" flexDirection="column" gap={12} justifyContent="flexStart" width={150} height={250}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -178,11 +178,11 @@ export const ColumnJustifyCenter: Story = {
   render: () => (
     <Container>
       <Title>Column - Justify Content: center</Title>
-      <Column gap={12} justifyContent="center" width={150} height={250}>
+      <View display="flex" flexDirection="column" gap={12} justifyContent="center" width={150} height={250}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -191,11 +191,11 @@ export const ColumnJustifyFlexEnd: Story = {
   render: () => (
     <Container>
       <Title>Column - Justify Content: flexEnd</Title>
-      <Column gap={12} justifyContent="flexEnd" width={150} height={250}>
+      <View display="flex" flexDirection="column" gap={12} justifyContent="flexEnd" width={150} height={250}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -204,11 +204,11 @@ export const ColumnJustifySpaceBetween: Story = {
   render: () => (
     <Container>
       <Title>Column - Justify Content: spaceBetween</Title>
-      <Column gap={12} justifyContent="spaceBetween" width={150} height={250}>
+      <View display="flex" flexDirection="column" gap={12} justifyContent="spaceBetween" width={150} height={250}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -217,11 +217,11 @@ export const ColumnJustifySpaceAround: Story = {
   render: () => (
     <Container>
       <Title>Column - Justify Content: spaceAround</Title>
-      <Column gap={12} justifyContent="spaceAround" width={150} height={250}>
+      <View display="flex" flexDirection="column" gap={12} justifyContent="spaceAround" width={150} height={250}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -231,11 +231,11 @@ export const ColumnAlignFlexStart: Story = {
   render: () => (
     <Container>
       <Title>Column - Align Items: flexStart</Title>
-      <Column gap={12} alignItems="flexStart" width={200} height={250}>
+      <View display="flex" flexDirection="column" gap={12} alignItems="flexStart" width={200} height={250}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff, width: 100 }} />
         <Block style={{ color: 0xffd93dff, width: 80 }} />
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -244,11 +244,11 @@ export const ColumnAlignCenter: Story = {
   render: () => (
     <Container>
       <Title>Column - Align Items: center</Title>
-      <Column gap={12} alignItems="center" width={200} height={250}>
+      <View display="flex" flexDirection="column" gap={12} alignItems="center" width={200} height={250}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff, width: 100 }} />
         <Block style={{ color: 0xffd93dff, width: 80 }} />
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -257,25 +257,32 @@ export const ColumnAlignFlexEnd: Story = {
   render: () => (
     <Container>
       <Title>Column - Align Items: flexEnd</Title>
-      <Column gap={12} alignItems="flexEnd" width={200} height={250}>
+      <View display="flex" flexDirection="column" gap={12} alignItems="flexEnd" width={200} height={250}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff, width: 100 }} />
         <Block style={{ color: 0xffd93dff, width: 80 }} />
-      </Column>
+      </View>
     </Container>
   )
 };
 
-// COMBINED VARIANTS
 export const RowCenterBoth: Story = {
   render: () => (
     <Container>
       <Title>Row - Center (justify + align)</Title>
-      <Row gap={12} justifyContent="center" alignItems="center" width={400} height={150}>
+      <View
+        display="flex"
+        flexDirection="column"
+        gap={12}
+        justifyContent="center"
+        alignItems="center"
+        width={400}
+        height={150}
+      >
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff, height: 100 }} />
         <Block style={{ color: 0xffd93dff, height: 80 }} />
-      </Row>
+      </View>
     </Container>
   )
 };
@@ -284,11 +291,19 @@ export const ColumnCenterBoth: Story = {
   render: () => (
     <Container>
       <Title>Column - Center (justify + align)</Title>
-      <Column gap={12} justifyContent="center" alignItems="center" width={200} height={250}>
+      <View
+        display="flex"
+        flexDirection="column"
+        gap={12}
+        justifyContent="center"
+        alignItems="center"
+        width={200}
+        height={250}
+      >
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff, width: 100 }} />
         <Block style={{ color: 0xffd93dff, width: 80 }} />
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -297,32 +312,32 @@ export const RowWithGap: Story = {
   render: () => (
     <Container>
       <Title>Row - Gap variations</Title>
-      <Column gap={20}>
+      <View display="flex" flexDirection="column" gap={20}>
         <View>
           <Title style={{ fontSize: 14 }}>Gap: 8</Title>
-          <Row gap={8} width={400} height={80}>
+          <View display="flex" flexDirection="row" gap={8} width={400} height={80}>
             <Block style={{ color: 0x4dabf5ff }} />
             <Block style={{ color: 0x51cf66ff }} />
             <Block style={{ color: 0xffd93dff }} />
-          </Row>
+          </View>
         </View>
         <View>
           <Title style={{ fontSize: 14 }}>Gap: 20</Title>
-          <Row gap={20} width={400} height={80}>
+          <View display="flex" flexDirection="row" gap={20} width={400} height={80}>
             <Block style={{ color: 0x4dabf5ff }} />
             <Block style={{ color: 0x51cf66ff }} />
             <Block style={{ color: 0xffd93dff }} />
-          </Row>
+          </View>
         </View>
         <View>
           <Title style={{ fontSize: 14 }}>Gap: 40</Title>
-          <Row gap={40} width={400} height={80}>
+          <View display="flex" flexDirection="row" gap={40} width={400} height={80}>
             <Block style={{ color: 0x4dabf5ff }} />
             <Block style={{ color: 0x51cf66ff }} />
             <Block style={{ color: 0xffd93dff }} />
-          </Row>
+          </View>
         </View>
-      </Column>
+      </View>
     </Container>
   )
 };
@@ -331,14 +346,30 @@ export const WrapBehavior: Story = {
   render: () => (
     <Container>
       <Title>Row - Wrap (many items)</Title>
-      <Row gap={12} wrap={true} width={300} height={200}>
+      <View display="flex" flexDirection="row" flexWrap="wrap" gap={12} width={300} height={200}>
         <Block style={{ color: 0x4dabf5ff }} />
         <Block style={{ color: 0x51cf66ff }} />
         <Block style={{ color: 0xffd93dff }} />
         <Block style={{ color: 0xff6b6bff }} />
         <Block style={{ color: 0xfcc419ff }} />
         <Block style={{ color: 0x9c36b5ff }} />
-      </Row>
+      </View>
+    </Container>
+  )
+};
+
+export const WrapReverseBehavior: Story = {
+  render: () => (
+    <Container>
+      <Title>Row - Wrap (many items)</Title>
+      <View display="flex" flexDirection="row" flexWrap="wrap-reverse" gap={12} width={300} height={200}>
+        <Block style={{ color: 0x4dabf5ff }} />
+        <Block style={{ color: 0x51cf66ff }} />
+        <Block style={{ color: 0xffd93dff }} />
+        <Block style={{ color: 0xff6b6bff }} />
+        <Block style={{ color: 0xfcc419ff }} />
+        <Block style={{ color: 0x9c36b5ff }} />
+      </View>
     </Container>
   )
 };
