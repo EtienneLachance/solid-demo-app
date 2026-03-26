@@ -1,7 +1,93 @@
 import { Component } from "solid-js";
-import { Text, View } from "@lightningtv/solid";
+import { IntrinsicTextNodeStyleProps, Text, View } from "@lightningtv/solid";
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
-import theme from "theme";
+
+export const customTheme = {
+  headlineBold: {
+    fontFamily: "Roboto",
+    fontSize: 38,
+    fontWeight: 700,
+    lineHeight: 46,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  headline: {
+    fontFamily: "Roboto",
+    fontSize: 38,
+    fontWeight: 400,
+    lineHeight: 46,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  callout: {
+    fontFamily: "Roboto",
+    fontSize: 31,
+    fontWeight: 400,
+    lineHeight: 38,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  calloutBold: {
+    fontFamily: "Roboto",
+    fontSize: 31,
+    fontWeight: 700,
+    lineHeight: 38,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  body: {
+    fontFamily: "Roboto",
+    fontSize: 29,
+    fontWeight: 400,
+    lineHeight: 36,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  bodyBold: {
+    fontFamily: "Roboto",
+    fontSize: 29,
+    fontWeight: 700,
+    lineHeight: 36,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  caption1: {
+    fontFamily: "Roboto",
+    fontSize: 25,
+    fontWeight: 400,
+    lineHeight: 32,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  caption1Bold: {
+    fontFamily: "Roboto",
+    fontSize: 25,
+    fontWeight: 700,
+    lineHeight: 32,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  caption2: {
+    fontFamily: "Roboto",
+    fontSize: 23,
+    fontWeight: 400,
+    lineHeight: 30,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  caption2Bold: {
+    fontFamily: "Roboto",
+    fontSize: 23,
+    fontWeight: 700,
+    lineHeight: 30,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  caption3: {
+    fontFamily: "Roboto",
+    fontSize: 18,
+    fontWeight: 400,
+    lineHeight: 21.09,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps,
+  caption3Bold: {
+    fontFamily: "Roboto",
+    fontSize: 18,
+    fontWeight: 700,
+    lineHeight: 21.09,
+    verticalAlign: "bottom"
+  } satisfies IntrinsicTextNodeStyleProps
+};
 
 const TypographyStory: Component = (props: any) => {
   return (
@@ -18,7 +104,9 @@ const TypographyStory: Component = (props: any) => {
         style={{
           fontFamily: props.theme.fontFamily,
           fontSize: props.theme.fontSize,
-          fontWeight: props.theme.fontWeight
+          fontWeight: props.theme.fontWeight,
+          verticalAlign: props.theme.verticalAlign,
+          lineHeight: props.theme.lineHeight
         }}
       >
         {props.title}
@@ -36,13 +124,15 @@ export default meta;
 
 type Story = StoryObj<typeof TypographyStory>;
 
-export const Display1: Story = { args: { theme: theme.typography.display1, title: "Display 1" } };
-export const Display2: Story = { args: { theme: theme.typography.display2, title: "Display 2" } };
-export const Display3: Story = { args: { theme: theme.typography.display3, title: "Display 3" } };
-export const Display4: Story = { args: { theme: theme.typography.display4, title: "Display 4" } };
-export const Headline1: Story = { args: { theme: theme.typography.headline1, title: "Headline 1" } };
-export const Headline2: Story = { args: { theme: theme.typography.headline2, title: "Headline 2" } };
-export const Headline3: Story = { args: { theme: theme.typography.headline3, title: "Headline 3" } };
-export const Body1: Story = { args: { theme: theme.typography.body1, title: "Body 1" } };
-export const Body2: Story = { args: { theme: theme.typography.body2, title: "Body 2" } };
-export const Body3: Story = { args: { theme: theme.typography.body3, title: "Body 3" } };
+export const headlineBold: Story = { args: { theme: customTheme.headlineBold, title: "headlineBold" } };
+export const headline: Story = { args: { theme: customTheme.headline, title: "headline" } };
+export const callout: Story = { args: { theme: customTheme.callout, title: "callout" } };
+export const calloutBold: Story = { args: { theme: customTheme.calloutBold, title: "calloutBold" } };
+export const body: Story = { args: { theme: customTheme.body, title: "body" } };
+export const bodyBold: Story = { args: { theme: customTheme.bodyBold, title: "bodyBold" } };
+export const caption1: Story = { args: { theme: customTheme.caption1, title: "caption1" } };
+export const caption1Bold: Story = { args: { theme: customTheme.caption1Bold, title: "caption1Bold" } };
+export const caption2: Story = { args: { theme: customTheme.caption2, title: "caption2" } };
+export const caption2Bold: Story = { args: { theme: customTheme.caption2Bold, title: "caption2Bold" } };
+export const caption3: Story = { args: { theme: customTheme.caption3, title: "caption3" } };
+export const letterSpacing: Story = { args: { theme: customTheme.headlineBold, title: "toronto" } };

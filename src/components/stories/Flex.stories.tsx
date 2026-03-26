@@ -357,19 +357,3 @@ export const WrapBehavior: Story = {
     </Container>
   )
 };
-
-export const WrapReverseBehavior: Story = {
-  render: () => (
-    <Container>
-      <Title>Row - Wrap (many items)</Title>
-      <View display="flex" flexDirection="row" flexWrap="wrap-reverse" gap={12} width={300} height={200}>
-        <Block style={{ color: 0x4dabf5ff }} />
-        <Block style={{ color: 0x51cf66ff }} />
-        <Block style={{ color: 0xffd93dff }} />
-        <Block style={{ color: 0xff6b6bff }} />
-        <Block style={{ color: 0xfcc419ff }} />
-        <Block style={{ color: 0x9c36b5ff }} />
-      </View>
-    </Container>
-  )
-};
