@@ -63,6 +63,7 @@ export default function NavDrawer(props) {
     if (useMatch(() => "/browse/movie")()) return 462;
     if (useMatch(() => "/browse/tv")()) return 548;
     if (useMatch(() => "/examples")()) return 638;
+    if (useMatch(() => "/benchmark")()) return 728;
     return 366;
   });
 
@@ -87,7 +88,6 @@ export default function NavDrawer(props) {
           width={280}
           height={52}
           textureOptions={{
-            enableAlphaChannel: true
           }}
         />
 
@@ -98,7 +98,6 @@ export default function NavDrawer(props) {
           width={80}
           height={41}
           textureOptions={{
-            enableAlphaChannel: true
           }}
         />
         <Text x={90} y={104} contain="width" width={160} fontSize={12} color={theme.textSecondary}>
@@ -137,6 +136,14 @@ export default function NavDrawer(props) {
           onEnter={() => handleNavigate("/examples")}
         >
           Examples
+        </NavButton>
+        <NavButton
+          icon="perf"
+          iconColor={"#fff"}
+          announce={["Benchmark", "button"]}
+          onEnter={() => handleNavigate("/benchmark")}
+        >
+          Benchmark
         </NavButton>
       </Column>
       <View skipFocus ref={backdrop} style={styles.Gradient} />

@@ -9,21 +9,17 @@ if (pathIndex !== -1 && args.length > pathIndex + 1) {
   versionPath = args[pathIndex + 1];
 }
 
-const baseUrl = versionPath
-  ? `/solid-demo-app/${versionPath}/`
-  : "/solid-demo-app/";
+const baseUrl = versionPath ? `/solid-demo-app/${versionPath}/` : "/solid-demo-app/";
 const outDir = versionPath ? `dist/${versionPath}` : "dist";
 
-console.log(
-  `Building for ${versionPath ? "version: " + versionPath : "root"}...`
-);
+console.log(`Building for ${versionPath ? "version: " + versionPath : "root"}...`);
 console.log(`Base URL: ${baseUrl}`);
 console.log(`Output Directory: ${outDir}`);
 
 // Construct the Vite command
 // We use --emptyOutDir true to ensure the target directory is clean.
 // Using npx vite to ensure we use the local dependency if not in PATH, though scripts usually have it.
-const cmd = `vite build --sourcemap=false --base=${baseUrl} --outDir ${outDir} --emptyOutDir true`;
+const cmd = `npx vite build --sourcemap=false --base=${baseUrl} --outDir ${outDir} --emptyOutDir false`;
 
 console.log(`Running: ${cmd}`);
 

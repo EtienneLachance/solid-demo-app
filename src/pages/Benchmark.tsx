@@ -20,7 +20,7 @@ const Benchmark = (props) => {
   let columnRef: ElementNode | undefined;
 
   // ── Benchmark state ──
-  const [benchmarkStatus, setBenchmarkStatus] = createSignal("Waiting for data…");
+  const [benchmarkStatus, setBenchmarkStatus] = createSignal("Waiting for data...");
   const [avgFps, setAvgFps] = createSignal<number | null>(null);
   const [benchmarkRunning, setBenchmarkRunning] = createSignal(false);
   const [benchmarkDone, setBenchmarkDone] = createSignal(false);
@@ -76,14 +76,14 @@ const Benchmark = (props) => {
     attachFpsListener();
 
     // Small initial delay to let everything settle
-    setBenchmarkStatus("Starting benchmark…");
+    setBenchmarkStatus("Starting benchmark...");
     await sleep(1500);
 
     for (let cycle = 0; cycle < TOTAL_CYCLES; cycle++) {
       // ── Navigate DOWN through all rows ──
       for (let i = 0; i < totalRows - 1; i++) {
         setBenchmarkStatus(
-          `Cycle ${cycle + 1}/${TOTAL_CYCLES} — Down ${i + 1}/${totalRows - 1}`
+          `Cycle ${cycle + 1}/${TOTAL_CYCLES} - Down ${i + 1}/${totalRows - 1}`
         );
         simulateKeyDown("ArrowDown");
         await sleep(NAV_DELAY_MS);
@@ -92,7 +92,7 @@ const Benchmark = (props) => {
       // ── Navigate UP through all rows ──
       for (let i = 0; i < totalRows - 1; i++) {
         setBenchmarkStatus(
-          `Cycle ${cycle + 1}/${TOTAL_CYCLES} — Up ${i + 1}/${totalRows - 1}`
+          `Cycle ${cycle + 1}/${TOTAL_CYCLES} - Up ${i + 1}/${totalRows - 1}`
         );
         simulateKeyDown("ArrowUp");
         await sleep(NAV_DELAY_MS);
@@ -112,10 +112,10 @@ const Benchmark = (props) => {
       const max = Math.max(...fpsValues);
       setAvgFps(avg);
       setBenchmarkStatus(
-        `Done — Avg: ${avg.toFixed(1)} FPS | Min: ${min.toFixed(1)} | Max: ${max.toFixed(1)} | Samples: ${fpsValues.length}`
+        `Avg: ${avg.toFixed(1)} FPS | Min: ${min.toFixed(1)} | Max: ${max.toFixed(1)} | Samples: ${fpsValues.length}`
       );
     } else {
-      setBenchmarkStatus("Done — No FPS samples collected");
+      setBenchmarkStatus("Done - No FPS samples collected");
     }
   }
 
@@ -239,7 +239,7 @@ const Benchmark = (props) => {
       {/* ── Benchmark Overlay ── */}
       <View x={610} y={20} zIndex={200} style={overlayBgStyle}>
         <Text x={20} y={16} style={overlayTitleStyle}>
-          🏎️ Benchmark
+          Benchmark
         </Text>
         <Text
           x={20}

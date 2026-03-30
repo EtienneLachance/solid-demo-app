@@ -145,15 +145,15 @@ const posterTitleStyles = {
   lineHeight: 22,
   height: 22,
   x: 10,
-  y: 278,
+  y: 288,
   contain: "width",
   width: 185,
   maxLines: 2,
-  alpha: 0,
-  $focus: {
-    alpha: 1,
-    y: 288
-  },
+  alpha: 1,
+  // $focus: {
+  //   alpha: 1,
+  //   y: 288
+  // },
   transition: {
     y: heroTransition,
     alpha: heroTransition

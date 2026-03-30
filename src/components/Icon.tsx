@@ -19,6 +19,18 @@ let sprite;
 function Icon(props: IconProps) {
   sprite =
     sprite || createSpriteMap(basePath + "assets/icons_white.png", icons);
+
+  if (props.name === "perf") {
+    return (
+      <View
+        {...props}
+        src={`${basePath}assets/perficon.png`}
+        width={100}
+        y={25}
+        height={50}
+      ></View>
+    );
+  }
   return (
     <View
       {...props}
