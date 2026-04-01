@@ -1,3 +1,4 @@
+import fs from "fs";
 import { execSync } from "child_process";
 import process from "process";
 
@@ -21,6 +22,18 @@ console.log(`Output Directory: ${outDir}`);
 // Using npx vite to ensure we use the local dependency if not in PATH, though scripts usually have it.
 const cmd = `npx vite build --sourcemap=false --base=${baseUrl} --outDir ${outDir} --emptyOutDir false`;
 
+const benchmarkPath = "src/pages/Benchmark.tsx";
+let originalBenchmarkContent = "";
+let modifiedBenchmark = false;
+
+if (versionPath && fs.existsSync(benchmarkPath)) {
+  console.log(`Injecting path "${versionPath}" into ${benchmarkPath}...`);
+  originalBenchmarkContent = fs.readFileSync(benchmarkPath, "utf8");
+  const newContent = originalBenchmarkContent.replace("###", versionPath);
+  fs.writeFileSync(benchmarkPath, newContent);
+  modifiedBenchmark = true;
+}
+
 console.log(`Running: ${cmd}`);
 
 try {
@@ -28,4 +41,10 @@ try {
 } catch (error) {
   console.error("Build failed.");
   process.exit(1);
+} finally {
+  if (modifiedBenchmark) {
+    console.log(`Reverting ${benchmarkPath}...`);
+    fs.writeFileSync(benchmarkPath, originalBenchmarkContent);
+  }
 }
+

@@ -35,11 +35,6 @@ for VERSION in "${VERSIONS[@]}"; do
       pkg.dependencies['@lightningtv/solid'] = '3.2.0';
     }
     fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
-
-    // Inject version into Benchmark.tsx
-    let benchmarkFile = fs.readFileSync('src/pages/Benchmark.tsx', 'utf8');
-    benchmarkFile = benchmarkFile.replace('###', version);
-    fs.writeFileSync('src/pages/Benchmark.tsx', benchmarkFile);
   "
 
   # Install the specific version
@@ -51,15 +46,6 @@ for VERSION in "${VERSIONS[@]}"; do
   node scripts/build-github.js --path "$VERSION_PATH"
 
   echo "--- Finished building version $VERSION ---"
-
-  # Revert Benchmark.tsx for next iteration
-  node -e "
-    const fs = require('fs');
-    const version = '$VERSION';
-    let file = fs.readFileSync('src/pages/Benchmark.tsx', 'utf8');
-    file = file.replace(version, '###');
-    fs.writeFileSync('src/pages/Benchmark.tsx', file);
-  "
   echo ""
 done
 
