@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Configuration
-VERSIONS=("3.1.6" "3.2.3" "3.2.4" "3.2.5" "3.2.6" "3.3.0")
+VERSIONS=("3.0.0" "3.1.6" "3.2.3" "3.2.4" "3.2.5" "3.2.6" "3.3.0")
 
 # Iterate through each version
 for VERSION in "${VERSIONS[@]}"; do
@@ -19,7 +19,13 @@ for VERSION in "${VERSIONS[@]}"; do
 
     // Update package.json
     const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-    pkg.dependencies['@lightningjs/renderer'] = 'npm:@lightningtv/renderer@' + version;
+
+    // Special case for 3.0.0 (no alias)
+    if (version === '3.0.0') {
+      pkg.dependencies['@lightningjs/renderer'] = '3.0.0';
+    } else {
+      pkg.dependencies['@lightningjs/renderer'] = 'npm:@lightningtv/renderer@' + version;
+    }
 
     // Logic for @lightningtv/solid: renderer < 3.3.0 -> 3.1.8, renderer >= 3.3.0 -> 3.2.0
     const parts = version.split('.').map(Number);

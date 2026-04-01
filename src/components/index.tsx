@@ -16,7 +16,6 @@ export function Thumbnail(props: IntrinsicNodeProps & { item: Tile }) {
       {...props}
       id="thumbnail"
       src={props.item.src}
-      group={'recommendation'}
       placeholder="./assets/fallback.png"
       item={props.item}
       announce={[props.item.title, 'PAUSE-1', props.item.overview]}
@@ -117,7 +116,6 @@ const posterStyles = {
   width: 185,
   height: 278,
   scale: 1,
-  zIndex: 2,
   color: "#b0b0b0",
   borderRadius: 8,
   transition: {
@@ -163,9 +161,9 @@ const posterTitleStyles = {
 export function PosterTitle(props: NodeProps & { title: string }) {
   return (
     <View
+      {...props}
       src={props.item?.src}
       backdrop={props.item?.backdrop}
-      {...props}
       onFail={(node) => (node.src = "./assets/fallback.png")}
       style={posterStyles}
       forwardStates
