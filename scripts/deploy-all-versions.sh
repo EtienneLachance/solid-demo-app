@@ -12,12 +12,28 @@ for VERSION in "${VERSIONS[@]}"; do
 
   echo "Updating package.json to version $VERSION with path $VERSION_PATH..."
 
-  # Update package.json using node -e (more robust than sed for JSON)
+  # Update package.json and Benchmark.tsx using node
   node -e "
     const fs = require('fs');
+    const version = '$VERSION';
+
+    // Update package.json
     const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-    pkg.dependencies['@lightningjs/renderer'] = 'npm:@lightningtv/renderer@' + '$VERSION';
+    pkg.dependencies['@lightningjs/renderer'] = 'npm:@lightningtv/renderer@' + version;
+
+    // Logic for @lightningtv/solid: renderer < 3.3.0 -> 3.1.8, renderer >= 3.3.0 -> 3.2.0
+    const parts = version.split('.').map(Number);
+    if (parts[0] < 3 || (parts[0] === 3 && parts[1] < 3)) {
+      pkg.dependencies['@lightningtv/solid'] = '3.1.8';
+    } else {
+      pkg.dependencies['@lightningtv/solid'] = '3.2.0';
+    }
     fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+
+    // Inject version into Benchmark.tsx
+    let benchmarkFile = fs.readFileSync('src/pages/Benchmark.tsx', 'utf8');
+    benchmarkFile = benchmarkFile.replace('###', version);
+    fs.writeFileSync('src/pages/Benchmark.tsx', benchmarkFile);
   "
 
   # Install the specific version
@@ -29,6 +45,15 @@ for VERSION in "${VERSIONS[@]}"; do
   node scripts/build-github.js --path "$VERSION_PATH"
 
   echo "--- Finished building version $VERSION ---"
+
+  # Revert Benchmark.tsx for next iteration
+  node -e "
+    const fs = require('fs');
+    const version = '$VERSION';
+    let file = fs.readFileSync('src/pages/Benchmark.tsx', 'utf8');
+    file = file.replace(version, '###');
+    fs.writeFileSync('src/pages/Benchmark.tsx', file);
+  "
   echo ""
 done
 

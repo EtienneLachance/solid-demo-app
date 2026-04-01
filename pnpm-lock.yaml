@@ -3735,7 +3735,7 @@ snapshots:
   '@lightningtv/solid@3.2.0(@lightningtv/renderer@3.3.0)(@solidjs/router@0.15.3(solid-js@1.9.9))(solid-js@1.9.9)':
     dependencies:
       '@lightningjs/renderer': '@lightningtv/renderer@3.3.0'
-      '@solid-primitives/event-listener': 2.4.3(solid-js@1.9.9)
+      '@solid-primitives/event-listener': 2.4.5(solid-js@1.9.9)
       '@solid-primitives/list': 0.1.2(solid-js@1.9.9)
       '@solid-primitives/mouse': 2.1.6(solid-js@1.9.9)
       '@solid-primitives/scheduled': 1.5.2(solid-js@1.9.9)

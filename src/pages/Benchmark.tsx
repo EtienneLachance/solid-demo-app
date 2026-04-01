@@ -254,7 +254,7 @@ const Benchmark = (props) => {
         {/* ── Benchmark Overlay ── */}
         <View x={610} y={20} zIndex={200} style={overlayBgStyle}>
           <Text x={20} y={16} style={overlayTitleStyle}>
-            Benchmark
+            Benchmark (version: ###)
           </Text>
           <Text
             x={20}
