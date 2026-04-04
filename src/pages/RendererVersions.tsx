@@ -28,7 +28,7 @@ const RendererVersionsPage = () => {
     if (index > 0) {
       setVersion(knownVersions[index - 1]);
     } else {
-      setVersion(knownVersions[0]);
+      setVersion(knownVersions[knownVersions.length - 1]);
     }
     return true;
   };
