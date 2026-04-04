@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => ({
     __RTT__: false,
     __renderTextBatching__: true,
     __enableCompressedTextures__: true,
+    __calculateFps__: true,
     LIGHTNING_DOM_RENDERING: true
   },
   plugins: [

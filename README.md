@@ -18,7 +18,7 @@ Solid
 
 ## Getting started
 
-Get an api key from [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction)
+Get an API Read Access Token from [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction)
 and put the key in `src/api/key.js` with `export default 'KEY_VALUE'`
 
 ```

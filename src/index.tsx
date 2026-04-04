@@ -61,6 +61,8 @@ const LargeImagePerformance = lazy(() => import("./pages/LargeImagePerformance")
 const MixedImagePerformance = lazy(() => import("./pages/MixedImagePerformance"));
 const TextureCompressionPerformance = lazy(() => import("./pages/TextureCompressionPerformance"));
 const ComplexFlexPage = lazy(() => import("./pages/ComplexFlex"));
+const BenchmarkPage = lazy(() => import("./pages/Benchmark"));
+const RendererVersionsPage = lazy(() => import("./pages/RendererVersions"));
 
 let numImageWorkers = 4;
 const urlParams = new URLSearchParams(window.location.search);
@@ -93,7 +95,7 @@ Config.simpleAnimationsEnabled = true && !Config.domRendererEnabled;
 // Config.focusDebug = true;
 
 Config.rendererOptions = {
-  fpsUpdateInterval: logFps ? 1000 : 0,
+  fpsUpdateInterval: logFps ? 300 : 0,
   inspector: import.meta.env.DEV ? Inspector : undefined,
   textureMemory: {
     criticalThreshold: 200e6,
@@ -103,7 +105,7 @@ Config.rendererOptions = {
   // Set the resolution based on window height
   // 720p = 0.666667, 1080p = 1, 1440p = 1.5, 2160p = 2
   deviceLogicalPixelRatio,
-  devicePhysicalPixelRatio: 1,
+  devicePhysicalPixelRatio: window.devicePixelRatio || 1,
   createImageBitmapSupport: "auto",
   boundsMargin: 100,
   targetFPS: 0,
@@ -190,6 +192,8 @@ render(() => (
         <Route path="mixed-image-performance" component={MixedImagePerformance} />
         <Route path="texture-compression-performance" component={TextureCompressionPerformance} />
         <Route path="complexflex" component={ComplexFlexPage} />
+        <Route path="benchmark" component={BenchmarkPage} preload={tmdbData} />
+        <Route path="versions" component={RendererVersionsPage} />
 
         <Route path="*all" component={NotFound} />
       </Route>

@@ -6,7 +6,7 @@ import { type Tile } from "../api/formatters/ItemFormatter";
 
 export function Thumbnail(props: IntrinsicNodeProps & { item: Tile }) {
   return (
-    <Image
+    <View
       {...props}
       id="thumbnail"
       src={props.item.src}
@@ -105,6 +105,7 @@ const titleRowStyles = {
 };
 
 export function TitleRow(props: TileRowProps) {
+  const slug = () => props.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '') || 'row';
   return (
     <View height={props.height} forwardFocus={1} marginTop={30}>
       <Text skipFocus style={titleRowStyles}>
@@ -121,7 +122,7 @@ export function TitleRow(props: TileRowProps) {
         selected={props.selected}
       >
         {(item, index) => (
-          <Dynamic component={typeToComponent[props.rowType || props.row?.type]} index={index()} item={item()} />
+          <Dynamic component={typeToComponent[props.rowType || props.row?.type]} index={index()} item={item()} group={slug()} />
         )}
       </VirtualRow>
     </View>
@@ -132,9 +133,8 @@ const posterStyles = {
   width: 185,
   height: 278,
   scale: 1,
-  zIndex: 2,
   color: "#b0b0b0",
-  //borderRadius: 8,
+  borderRadius: 8,
   transition: {
     scale: { duration: 200, easing: "linear" }
   },
@@ -148,7 +148,7 @@ export function Poster(props: NodeProps) {
       title={props.item?.shortTitle}
       backdrop={props.item?.backdrop}
       {...props}
-      onFail={(node) => (node.src = "failback.png")}
+      onFail={(node) => (node.src = "./assets/fallback.png")}
       style={posterStyles}
     />
   );
@@ -160,15 +160,15 @@ const posterTitleStyles = {
   lineHeight: 22,
   height: 22,
   x: 10,
-  y: 278,
+  y: 288,
   contain: "width",
   width: 185,
   maxLines: 2,
-  alpha: 0,
-  $focus: {
-    alpha: 1,
-    y: 288
-  },
+  alpha: 1,
+  // $focus: {
+  //   alpha: 1,
+  //   y: 288
+  // },
   transition: {
     y: heroTransition,
     alpha: heroTransition
@@ -179,10 +179,10 @@ export function PosterTitle(props: NodeProps & { title: string }) {
   console.log(props.item?.title);
   return (
     <View
+      {...props}
       src={props.item?.src}
       backdrop={props.item?.backdrop}
-      {...props}
-      onFail={(node) => (node.src = "failback.png")}
+      onFail={(node) => (node.src = "./assets/fallback.png")}
       style={posterStyles}
       forwardStates
     >
