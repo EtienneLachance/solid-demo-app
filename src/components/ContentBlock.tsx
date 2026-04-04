@@ -45,6 +45,7 @@ const Description = (props) => (
 );
 
 export const Badge = (props) => {
+  console.log(props.children);
   return (
     <View
       {...props}

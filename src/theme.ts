@@ -1,7 +1,7 @@
 export default {
   // === Primary Brand ===
-  primary: "#2C4F7C",         // Solid Blue
-  primaryLight: "#4A7BD0",    // Lighter accent
+  primary: "#2C4F7C", // Solid Blue
+  primaryLight: "#4A7BD0", // Lighter accent
 
   // === Neutrals ===
   backgroundDark: "#0E1218",
@@ -48,85 +48,85 @@ export default {
   },
   typography: {
     display1: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 75,
       lineHeight: 85,
       fontWeight: 400,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     display2: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 50,
       lineHeight: 60,
       fontWeight: 400,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     display3: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 56,
       fontWeight: 400,
       lineHeight: 68,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     display4: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 48,
       fontWeight: 400,
       lineHeight: 64,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     headline1: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 35,
       fontWeight: 400,
       lineHeight: 48,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     headline2: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 30,
       fontWeight: 400,
       lineHeight: 40,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     headline3: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 25,
       fontWeight: 400,
       lineHeight: 36,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     body1: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 25,
       fontWeight: 400,
       lineHeight: 40,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     body2: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 22,
       fontWeight: 400,
       lineHeight: 32,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
+      verticalAlign: "middle",
+      textBaseline: "bottom"
     },
     body3: {
-      fontFamily: 'Arial',
+      fontFamily: "Arial",
       fontSize: 20,
       fontWeight: 400,
       lineHeight: 32,
-      verticalAlign: 'middle',
-      textBaseline: 'bottom'
-    },
+      verticalAlign: "middle",
+      textBaseline: "bottom"
+    }
   },
   color: {
     palette: {},
@@ -184,6 +184,7 @@ export default {
     fillNegative: 0xe74c3cff,
     fillInfo: 0x93a9fdff,
     fillCaution: 0xdc7633ff,
+    greyscaleWhite50: 0xffffff80,
     strokeNeutral: 0xf8f7faff,
     strokeNeutralSecondary: 0xf8f7fab3,
     strokeNeutralTertiary: 0xf8f7fa1a,
@@ -229,5 +230,5 @@ export default {
     shadowBrandFocus: 0x000000b3,
     shadowBrandElevated: 0x000000b3,
     shadowBrandText: 0x0000000
-  },
-}
+  }
+};
