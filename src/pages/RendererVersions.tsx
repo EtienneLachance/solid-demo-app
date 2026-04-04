@@ -81,7 +81,7 @@ const RendererVersionsPage = () => {
 
   return (
     <View style={Container} autofocus onRight={onRight} onLeft={onLeft} onUp={onUp} onDown={onDown} onEnter={onEnter}>
-      <Text style={Title}>Renderer Version Switcher</Text>
+      <Text style={Title}>Benchmark - Select Renderer Version To Run</Text>
       <Text style={VersionText}>{version().toString()}</Text>
       <Text style={Instructions}>Use LEFT / RIGHT arrows to select a known version</Text>
       <Text style={Instructions}>Use UP / DOWN arrows to select a custom number</Text>

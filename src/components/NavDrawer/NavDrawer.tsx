@@ -142,17 +142,9 @@ export default function NavDrawer(props) {
           icon="perf"
           iconColor={"#fff"}
           announce={["Benchmark", "button"]}
-          onEnter={() => handleNavigate("/benchmark")}
-        >
-          Benchmark
-        </NavButton>
-        <NavButton
-          icon="experiment"
-          iconColor={"#fff"}
-          announce={["Versions", "button"]}
           onEnter={() => handleNavigate("/versions")}
         >
-          Versions
+          Benchmark
         </NavButton>
       </Column>
       <View skipFocus ref={backdrop} style={styles.Gradient} />
