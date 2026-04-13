@@ -41,16 +41,9 @@ export default defineConfig(({ mode }) => ({
     })
   ],
   build: {
-    targets: ["chrome>=69"],
-    minify: "terser",
-    terserOptions: {
-      compress: false,
-      mangle: false,
-      format: {
-        comments: false,
-        beautify: true
-      }
-    },
+    targets: "chrome53",
+    outDir: "dist",
+    emptyOutDir: true,
     sourcemap: false,
     rollupOptions: {
       input: {
