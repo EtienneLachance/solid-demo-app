@@ -1,6 +1,6 @@
 const API_BASE = "https://api.themoviedb.org/3";
 
-const API_KEY_V4 = process.env.API_KEY_V4 ?? "FAKE_API_KEY";
+const API_KEY_V4 = import.meta.env.VITE_API_KEY_V4 ?? "FAKE_API_KEY";
 
 let tmdbConfig;
 let baseImageUrl;
