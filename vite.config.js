@@ -20,7 +20,6 @@ export default defineConfig(({ mode }) => ({
       include: ["src/**/*.{ts,tsx,js,jsx}"]
     }),
     devtools({
-      /* features options - all disabled by default */
       autoname: true,
       locator: {
         jsxLocation: true,
@@ -37,13 +36,8 @@ export default defineConfig(({ mode }) => ({
     }),
     legacy({
       targets: ["chrome>=38", "not IE 11"],
-      // polyfills: ["es.promise.finally", "es/map", "es/set"],
-      // modernPolyfills: true,
       additionalLegacyPolyfills: ["whatwg-fetch"],
-      modernPolyfills: [
-        // Safari 11 has modules, but throws > ReferenceError: Can't find variable: globalThis
-        "es.global-this"
-      ]
+      modernPolyfills: ["es.global-this"]
     })
   ],
   build: {
@@ -59,11 +53,9 @@ export default defineConfig(({ mode }) => ({
     },
     sourcemap: false,
     rollupOptions: {
-      // Only include your main entry points, not assets/*.js
       input: {
         main: path.resolve(__dirname, "index.html")
       },
-      // Exclude all JS files in assets/ from being bundled
       external: (id) => id.startsWith("assets/") && id.endsWith(".js")
     }
   },
