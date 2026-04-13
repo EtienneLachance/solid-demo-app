@@ -41,7 +41,7 @@ export default defineConfig(({ mode }) => ({
     })
   ],
   build: {
-    targets: "chrome53",
+    target: "es2015",
     outDir: "dist",
     emptyOutDir: true,
     sourcemap: false,
