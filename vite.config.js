@@ -57,7 +57,15 @@ export default defineConfig(({ mode }) => ({
         beautify: true
       }
     },
-    sourcemap: false
+    sourcemap: false,
+    rollupOptions: {
+      // Only include your main entry points, not assets/*.js
+      input: {
+        main: path.resolve(__dirname, "index.html")
+      },
+      // Exclude all JS files in assets/ from being bundled
+      external: (id) => id.startsWith("assets/") && id.endsWith(".js")
+    }
   },
   resolve: {
     alias: {
