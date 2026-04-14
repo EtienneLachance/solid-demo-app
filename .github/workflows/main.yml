@@ -30,8 +30,32 @@ jobs:
       - name: Lint & Prettier
         run: pnpm run lint:fix:prettier
 
-  chromatic:
-    if: github.ref == 'refs/heads/master' && github.event_name == 'workflow_dispatch'
+  chromatic-pr:
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    needs: ci-checks
+    runs-on: ubuntu-latest
+    environment:
+      name: chromatic-approval
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.17.0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build Storybook
+        run: pnpm run build-storybook
+      - name: Publish to Chromatic (manual approval)
+        run: pnpx chromatic --project-token=chpt_feeba3cebf08e9a
+
+  chromatic-main:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: ci-checks
     runs-on: ubuntu-latest
     steps:
@@ -51,3 +75,25 @@ jobs:
         run: pnpm run build-storybook
       - name: Publish to Chromatic (auto-accept changes)
         run: pnpx chromatic --project-token=chpt_feeba3cebf08e9a --auto-accept-changes
+
+  chromatic-manual:
+    if: github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+    needs: ci-checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.17.0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build Storybook
+        run: pnpm run build-storybook
+      - name: Publish to Chromatic (manual run)
+        run: pnpx chromatic --project-token=chpt_feeba3cebf08e9a
