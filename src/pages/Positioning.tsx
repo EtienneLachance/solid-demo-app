@@ -38,6 +38,7 @@ const PositioningPage = () => {
   const intervals: number[] = [];
 
   intervals.push(
+    // @ts-ignore
     setInterval(() => {
       setState((prevState) => ({
         ...prevState,
@@ -47,6 +48,7 @@ const PositioningPage = () => {
   );
 
   intervals.push(
+    // @ts-ignore
     setInterval(() => {
       setState((prevState) => ({
         ...prevState,
@@ -56,6 +58,7 @@ const PositioningPage = () => {
   );
 
   intervals.push(
+    // @ts-ignore
     setInterval(() => {
       setState((prevState) => ({
         ...prevState,
@@ -65,6 +68,7 @@ const PositioningPage = () => {
   );
 
   intervals.push(
+    // @ts-ignore
     setInterval(() => {
       setState((prevState) => {
         const v = parseFloat(prevState.bar2.v);
