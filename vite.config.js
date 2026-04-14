@@ -41,7 +41,6 @@ export default defineConfig(({ mode }) => ({
     })
   ],
   build: {
-    target: "es2015",
     outDir: "dist",
     emptyOutDir: true,
     sourcemap: false,
