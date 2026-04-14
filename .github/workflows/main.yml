@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - "**"
+      - "main"
   pull_request:
   workflow_dispatch:
 
@@ -31,7 +31,7 @@ jobs:
         run: pnpm run lint:fix:prettier
 
   chromatic-pr:
-    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    if: github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
     needs: ci-checks
     runs-on: ubuntu-latest
     environment:
