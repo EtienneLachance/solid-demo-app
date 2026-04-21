@@ -167,12 +167,12 @@ export const RowWithCenterItemsAndBorderRadiusAndFocus: Story = {
             borderRadius={20}
           >
             <Text center color={theme.color.black}>
-              Center 1
+              Center 3
             </Text>
           </View>
           <View width={300} height={120} color={theme.color.greyscaleWhite50} borderRadius={20}>
             <Text center color={theme.color.black}>
-              Center 2
+              Center 4
             </Text>
           </View>
         </Column>
