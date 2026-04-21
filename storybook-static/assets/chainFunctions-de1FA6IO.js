@@ -1,0 +1,1 @@
+function i(...e){const n=e.filter(r=>typeof r=="function");if(n.length!==0)return n.length===1?n[0]:function(...r){let t;for(const o of n)if(t=o.apply(this,r),t===!0)return t;return t}}const u=i;export{u as a,i as c};
