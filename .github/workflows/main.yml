@@ -6,9 +6,16 @@ on:
       - "**"
   pull_request:
   workflow_dispatch:
-  
+    inputs:
+      run_chromatic:
+        description: "Run Chromatic publish"
+        required: true
+        type: boolean
+        default: true
+
 jobs:
   ci-checks:
+    if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,8 +38,7 @@ jobs:
         run: pnpm run lint:fix:prettier
 
   chromatic:
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
-    needs: ci-checks
+    if: github.event_name == 'workflow_dispatch' && inputs.run_chromatic
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -51,9 +57,5 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build Storybook
         run: pnpm run build-storybook
-      - name: Publish to Chromatic (auto-accept changes)
-        if: github.ref == 'refs/heads/main'
-        run: pnpx chromatic --project-token=chpt_feeba3cebf08e9a --auto-accept-changes
-      - name: Publish to Chromatic (manual run)
-        if: github.ref != 'refs/heads/main'
-        run: pnpx chromatic --project-token=chpt_feeba3cebf08e9a
+      - name: Publish to Chromatic
+        run: pnpx chromatic --project-token=chpt_6601787c71d2014
