@@ -50,9 +50,6 @@ jobs:
         run: pnpm install --frozen-lockfile
       - name: Build Storybook
         run: pnpm run build-storybook
-      - name: Publish to Chromatic (auto-accept changes on main)
-        if: github.ref == 'refs/heads/main'
-        run: pnpx chromatic --project-token=chpt_6601787c71d2014 --auto-accept-changes
       - name: Publish to Chromatic
         if: github.ref != 'refs/heads/main'
         run: pnpx chromatic --project-token=chpt_6601787c71d2014
