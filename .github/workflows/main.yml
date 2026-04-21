@@ -6,12 +6,6 @@ on:
       - "**"
   pull_request:
   workflow_dispatch:
-    inputs:
-      run_chromatic:
-        description: "Run Chromatic publish"
-        required: true
-        type: boolean
-        default: true
 
 jobs:
   ci-checks:
@@ -38,7 +32,7 @@ jobs:
         run: pnpm run lint:fix:prettier
 
   chromatic:
-    if: github.event_name == 'workflow_dispatch' && inputs.run_chromatic
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.base_ref == 'main')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
