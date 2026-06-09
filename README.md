@@ -1,3 +1,5 @@
+# This project has moved: https://github.com/solid-tv/solid-demo-app
+
 # Lightning Demo App with SolidJS
 
 View the demo - [https://lightning-tv.github.io/solid-demo-app/](https://lightning-tv.github.io/solid-demo-app/)
